@@ -2,138 +2,129 @@
 
 **Data Analytics Competition FIND IT! 2024 — Team AI Geniuses**
 
-An end-to-end data science project focused on predicting **the promotion stage at which a customer is likely to respond to a promotional program** based on demographic and purchasing behavior data.
+An end-to-end data analytics and machine learning project developed for **Data Analytics Competition FIND IT! 2024**.
 
-The project covers the complete machine learning workflow, from **exploratory data analysis and data preprocessing to model development, evaluation, and deployment**.
+The project focuses on predicting **the promotion stage at which a customer is likely to receive a promotional program** based on demographic and purchasing behavior data. The solution covers data analysis, preprocessing, machine learning, model evaluation, and deployment.
 
 ---
 
 ## 📌 Project Overview
 
-In the retail industry, understanding customer behavior is important for developing more targeted and effective promotional strategies.
+Effective customer targeting requires an understanding of customer characteristics and purchasing behavior.
 
-This project uses customer demographic and purchasing behavior data to build a predictive model that can identify **when a customer is likely to respond to a promotional program**.
+In this project, customer demographic and transaction-related features are analyzed to develop a predictive model for identifying the promotion stage associated with a customer.
 
-The final solution combines multiple machine learning models using a **Weighted Ensemble** approach and deploys the resulting model as a web-based application.
+The project aims to:
 
-### Project Objectives
-
-* Predict the promotion stage at which a customer is likely to respond.
-* Identify customer patterns based on demographic and purchasing behavior.
-* Improve the effectiveness of promotional targeting through data-driven analysis.
-* Develop a machine learning solution that can be deployed and used through a web application.
+* Analyze customer demographic and purchasing behavior.
+* Develop a classification model to predict `jumlah_promosi`.
+* Compare multiple machine learning approaches.
+* Improve prediction performance using ensemble learning.
+* Deploy the selected model as a web-based application.
 
 ---
 
 ## 📊 Dataset
 
-The dataset contains customer demographic and purchasing behavior information.
+The dataset contains customer demographic and purchasing behavior features.
+
+### Dataset Files
+
+| File                 | Description                                   |
+| -------------------- | --------------------------------------------- |
+| `train_features.csv` | Training dataset containing customer features |
+| `train_labels.csv`   | Training target labels (`jumlah_promosi`)     |
+| `test_features.csv`  | Test dataset containing customer features     |
+
+The dataset contains **3,817 training observations and 3,818 test observations**. The target variable is `jumlah_promosi`, representing the promotion stage associated with a customer.
 
 ### Main Features
 
-| Feature                   | Description                                             |
-| ------------------------- | ------------------------------------------------------- |
-| `tahun_kelahiran`         | Customer's year of birth                                |
-| `pendidikan`              | Customer's education level                              |
-| `status_pernikahan`       | Customer's marital status                               |
-| `pendapatan`              | Customer's income                                       |
-| `jumlah_anak_balita`      | Number of children under five                           |
-| `jumlah_anak_remaja`      | Number of teenage children                              |
-| `terakhir_belanja`        | Number of days since the last purchase                  |
-| `belanja_buah`            | Spending on fruit products                              |
-| `belanja_daging`          | Spending on meat products                               |
-| `belanja_ikan`            | Spending on fish products                               |
-| `belanja_kue`             | Spending on cake products                               |
-| `pembelian_diskon`        | Number of purchases made during discounts               |
-| `pembelian_web`           | Number of online purchases                              |
-| `pembelian_toko`          | Number of offline/store purchases                       |
-| `keluhan`                 | Whether the customer has submitted a complaint          |
-| `tanggal_menjadi_anggota` | Date when the customer became a member                  |
-| `jumlah_promosi`          | Target: promotion stage at which the customer responded |
+The available customer information includes:
 
-## The dataset consists of **3,817 training observations and 3,818 test observations**. The target variable `jumlah_promosi` represents the promotion stage at which a customer received the promotional program, with `0` indicating that the customer did not receive a promotion.
+* Birth year
+* Education
+* Marital status
+* Income
+* Number of children
+* Recency / days since last purchase
+* Spending on fruits
+* Spending on meat
+* Spending on fish
+* Spending on cake
+* Purchases made with discounts
+* Web purchases
+* Store purchases
+* Complaints
+* Membership date
+
+These features are used to represent different aspects of customer demographics and purchasing behavior.
+
+---
 
 ## 🔎 Methodology
 
-The project follows an end-to-end machine learning workflow:
+The project follows an end-to-end data science workflow:
 
 ```text
-Raw Dataset
-     ↓
+Dataset
+   ↓
 Exploratory Data Analysis
-     ↓
-Feature Selection
-     ↓
-Feature Engineering
-     ↓
-Outlier Handling
-     ↓
-Missing Value Imputation
-     ↓
-Feature Scaling
-     ↓
+   ↓
+Data Preprocessing
+   ├── Feature Selection
+   ├── Feature Engineering
+   ├── Outlier Handling
+   ├── Missing Value Imputation
+   └── Feature Scaling
+   ↓
 Train-Validation Split
-     ↓
-Machine Learning Models
-     ↓
-Weighted Ensemble
-     ↓
+   ↓
+Machine Learning
+   ↓
 Model Evaluation
-     ↓
+   ↓
+Weighted Ensemble
+   ↓
 Deployment
 ```
 
 ### 1. Exploratory Data Analysis
 
-The dataset was explored to understand:
-
-* Customer demographic characteristics
-* Purchasing behavior
-* Distribution of numerical features
-* Categorical feature patterns
-* Missing values
-* Potential outliers
-* Relationships between customer characteristics and promotional responses
+The dataset was explored to understand customer characteristics and purchasing behavior before model development.
 
 ### 2. Data Preprocessing
 
-Several preprocessing techniques were applied:
+The preprocessing stage includes:
 
-* **Feature selection** to remove features with a high proportion of missing values or limited contribution.
-* **Feature engineering**, including converting customer birth year into age and encoding categorical variables.
-* **Outlier handling** for variables such as age and income.
-* **Missing value imputation** using predictive models.
-* **Feature scaling** using Standardization or Min-Max Scaling depending on the distribution of each feature.
-* **Train-validation split** using an 80:20 ratio.
+* Feature selection
+* Feature engineering
+* Outlier handling
+* Missing value imputation
+* Feature scaling
+* 80:20 train-validation split
 
-The preprocessing pipeline includes both traditional statistical techniques and machine-learning-based imputation.
+The preprocessing pipeline also applies model-based techniques for missing value imputation.
 
----
+### 3. Model Development
 
-## 🤖 Modeling
+Several machine learning approaches were evaluated, including:
 
-The project evaluates multiple machine learning approaches, including:
-
-* K-Nearest Neighbors (KNN)
+* K-Nearest Neighbors
 * Random Forest
-* ExtraTrees
 * XGBoost
 * CatBoost
 * Neural Network
 * FastAI
 * Weighted Ensemble
 
-The main modeling strategy uses **stacking and weighted ensemble learning**. Models are trained in multiple stacks, where the predictions from earlier models are used as inputs for subsequent ensemble models.
-
-The final model is a **Weighted Ensemble L3**.
+A stacking-based ensemble approach was used to combine predictions from different models.
 
 ---
 
-## 📈 Model Evaluation
+## 📈 Model Performance
 
-The primary evaluation metric is **F1 Macro**, which is used to evaluate the classification performance across the target classes.
-
-### Validation Results
+The primary evaluation metric used in the project is **F1 Macro**.
 
 | Model                    |     F1 Macro |
 | ------------------------ | -----------: |
@@ -148,7 +139,7 @@ The primary evaluation metric is **F1 Macro**, which is used to evaluate the cla
 | Neural Network L1        |     0.693847 |
 | KNN L1                   |     0.557770 |
 
-The **Weighted Ensemble L3 achieved an F1 Macro validation score of 0.818968 (81.90%)** and was selected as the main model for deployment.
+The **Weighted Ensemble L3** achieved an F1 Macro score of **0.818968 (81.90%)** and was selected for deployment.
 
 ---
 
@@ -156,43 +147,41 @@ The **Weighted Ensemble L3 achieved an F1 Macro validation score of 0.818968 (81
 
 The selected model was deployed as a web application using:
 
-* **Python**
-* **Flask** as the web framework
-* **Google Cloud Run** as the deployment platform
-* **Large Language Model (LLM)** to provide additional descriptions after prediction
+* **Flask**
+* **Google Cloud Run**
+* **Large Language Model (LLM)** for generating additional descriptions after prediction
 
-The deployment allows users to input customer information and obtain a model prediction through a web interface.
+The deployed application allows users to provide customer information and obtain predictions through a web interface.
 
-### 🌐 Live Demo
+### Live Demo
 
-**[Open Deployment Website](https://aigeniuses.jemmyfebryan.site)**
+**[aigeniuses.jemmyfebryan.site](https://aigeniuses.jemmyfebryan.site)**
 
 ---
 
 ## 📁 Repository Structure
 
 ```text
-.
-├── dataset/
-│   └── [dataset files]
+DAC_FindIT2024/
 │
-├── notebook/
-│   └── [Jupyter Notebook]
-│
-├── report/
-│   └── Laporan FindIT2024.pdf
-│
+├── AIGeniuses.ipynb
+├── Laporan FindIT2024.pdf
+├── test_features.csv
+├── train_features.csv
+├── train_labels.csv
 └── README.md
 ```
 
-### Repository Contents
+### Files
 
-| Folder / File | Description                                                              |
-| ------------- | ------------------------------------------------------------------------ |
-| `dataset/`    | Dataset used for the analysis and modeling                               |
-| `notebook/`   | Complete data analysis, preprocessing, modeling, and evaluation workflow |
-| `report/`     | Detailed project report                                                  |
-| `README.md`   | Project overview and documentation                                       |
+| File                     | Description                                                                                     |
+| ------------------------ | ----------------------------------------------------------------------------------------------- |
+| `AIGeniuses.ipynb`       | Jupyter Notebook containing the data analysis, preprocessing, modeling, and evaluation workflow |
+| `Laporan FindIT2024.pdf` | Detailed project report                                                                         |
+| `train_features.csv`     | Training features                                                                               |
+| `train_labels.csv`       | Training target labels                                                                          |
+| `test_features.csv`      | Test features                                                                                   |
+| `README.md`              | Project documentation                                                                           |
 
 ---
 
@@ -211,7 +200,6 @@ The deployment allows users to input customer information and obtain a model pre
 * XGBoost
 * CatBoost
 * Random Forest
-* ExtraTrees
 * FastAI
 
 **Deployment**
@@ -224,34 +212,38 @@ The deployment allows users to input customer information and obtain a model pre
 
 ## 👥 Team
 
-**Team AI Geniuses**
+### AI Geniuses
 
-* Jemmy Febryan
-* German Mindo Simarmata
-* Meirida Karisma Putri
+* **Jemmy Febryan**
+* **German Mindo Simarmata**
+* **Meirida Karisma Putri**
 
-**Competition:** Data Analytics Competition FIND IT! 2024
+**Data Analytics Competition FIND IT! 2024**
 
 ---
 
 ## 📄 Project Report
 
-For a more detailed explanation of the methodology, analysis, model development, and results, please refer to:
+For a detailed explanation of the analysis, preprocessing, modeling process, and results, see:
 
-**`report/Laporan FindIT2024.pdf`**
+**[`Laporan FindIT2024.pdf`](./Laporan%20FindIT2024.pdf)**
+
+The complete implementation can be explored in:
+
+**[`AIGeniuses.ipynb`](./AIGeniuses.ipynb)**
 
 ---
 
 ## 💡 Key Takeaways
 
-This project demonstrates an end-to-end approach to solving a customer analytics problem using machine learning:
+This project demonstrates an end-to-end machine learning workflow for customer analytics, including:
 
-* Translating a promotional business problem into a predictive modeling task.
-* Working with demographic and customer behavioral data.
-* Performing data cleaning, feature engineering, outlier handling, and missing value imputation.
-* Comparing multiple machine learning algorithms.
-* Combining models through a Weighted Ensemble approach.
-* Evaluating models using F1 Macro.
-* Deploying the final model into a web-based application.
+* Translating a customer promotion problem into a predictive modeling task.
+* Working with demographic and purchasing behavior data.
+* Performing data preprocessing and feature engineering.
+* Comparing multiple machine learning models.
+* Applying ensemble learning to improve prediction performance.
+* Evaluating classification performance using F1 Macro.
+* Deploying the final model as a web application.
 
-The final solution achieved an **81.90% F1 Macro validation score** and was successfully integrated into a deployed application.
+The final deployed solution achieved an **F1 Macro score of 81.90%** on the validation set.
